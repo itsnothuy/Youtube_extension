@@ -4,17 +4,32 @@
     "name": "My Vite Extension",
     "author": "Huy Tran",
     "action": {
-        "default_popup": "index.html",
-        "default_title": "My Vite Extension"
+      "default_popup": "src/popup/popup.html",
+      "default_title": "Like/Dislike Extension"
     },
-    "permission": [
-        "scripting"
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://www.youtube.com/*"
+        ],
+        "js": [
+          "contentScript.js"
+        ]
+      }
     ],
-    "host_permission": [
-        "http://*/*",
-        "https://*/*"
+    "permissions": [
+      "scripting",
+      "activeTab"
     ],
-    "icon": {
-        "32": "icon32.png"
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "icons": {
+      "32": "icon32.png"
     }
-}
+  }
+  
