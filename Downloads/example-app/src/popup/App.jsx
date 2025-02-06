@@ -444,7 +444,7 @@ export default function App() {
               textColor={ratioColor}
               text={`${animRatio.toFixed(0)}%`}
             />
-            <p style={styles.ratioLabel}>Like Ratio</p>
+            <p style={{...styles.ratioLabel, color: ratioColor}}>Like Ratio</p>
           </div>
         </div>
       )}
@@ -486,7 +486,7 @@ function CircularProgress({ percentage, size, strokeWidth, text, color = '#4caf5
         cx={size / 2}
         cy={size / 2}
         style={{
-          transition: 'stroke-dashoffset 0.2s linear',
+          transition: 'stroke-dashoffset 0.8s linear',
         }}
       />
       {/* Text in the middle, rotate back so it's upright */}
@@ -495,8 +495,10 @@ function CircularProgress({ percentage, size, strokeWidth, text, color = '#4caf5
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        fill={textColor}
-        fontSize="12"
+        fill={textColor}     // e.g. white
+        fontSize="14"
+        fontWeight="600"
+        fontFamily="sans-serif"
         transform={`rotate(90, ${size / 2}, ${size / 2})`}
       >
         {text}
@@ -553,7 +555,12 @@ const styles = {
     alignItems: 'center',
   },
   ratioLabel: {
-    marginTop: 4,
-    fontSize: '0.9rem',
-  },
+    color: "#666",         // Matches the SVG text color
+    fontSize: "14px",      // Matches the SVG font size
+    fontWeight: "600",     // Matches the SVG font weight
+    fontFamily: "sans-serif", // Matches the SVG font family
+
+    textAlign: "center",   // Keeps it centered visually
+    marginTop: "4px",      // Adjust spacing without affecting layout
+  }
 };

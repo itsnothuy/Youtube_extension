@@ -1,9 +1,12 @@
-// src/popup/TitleButton.jsx
+// TitleButton.jsx
 
 import React from 'react';
-import './titleButton.css'; // We'll place the button CSS in here
+import './titleButton.css'; // same file as your original button CSS (with adjustments)
 
 export default function TitleButton({ channelName = '' }) {
+  // Decide which extra class to apply based on length
+  const text2Class = getText2Class(channelName);
+
   return (
     <button>
       <span className="icon">
@@ -25,10 +28,35 @@ export default function TitleButton({ channelName = '' }) {
           <path d="m74 59.5-21 10.8253v-21.6506z" fill="#cd201f"></path>
         </svg>
       </span>
-      {/* text1 => "Stats" */}
+
       <span className="text1">Stats</span>
-      {/* text2 => the channel name */}
-      <span className="text2">{channelName}</span>
+
+      {/* Add dynamic class for text2 based on length */}
+      <span className={text2Class}>{channelName}</span>
     </button>
   );
 }
+
+/** 
+ * Helper that returns something like:
+ *  "text2 text2--5-8"  if length is 5..8
+ *  "text2 text2--9-15" if length is 9..15
+ *  "text2 text2--over15" if length > 15
+ * Otherwise just "text2".
+ */
+function getText2Class(channelName) {
+    let base = 'text2';
+    const len = channelName.length;
+  
+    if (len >= 5 && len <= 8) {
+      return base + ' text2--5-8';
+    } else if (len > 8 && len <= 12) {
+      return base + ' text2--9-12';
+    } else if (len > 12 && len <= 15) {
+      return base + ' text2--12-15';
+    } else if (len > 15) {
+      return base + ' text2--over15';
+    }
+    return base; // Default case for less than 5 chars
+  }
+  

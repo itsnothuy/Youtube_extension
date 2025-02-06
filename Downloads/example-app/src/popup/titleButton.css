@@ -1,5 +1,4 @@
-/* titleButton.css */
-/* The same CSS you shared, with minor naming tweaks: */
+/* Keep everything else the same as your original snippet */
 
 button {
     position: relative;
@@ -15,18 +14,54 @@ button {
   .text1 {
     font-size: 15px;
     font-weight: 600;
-    margin-left: 22%;
+    margin-left: 20%;
   }
   
+  /* Tweak text2: shift left more, truncate, slightly smaller font */
   .text2 {
     position: absolute;
     top: 25%;
-    left: -50px; /* Start hidden to the left */
+    left: -55px;               /* was -50px; move it further left */
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;          /* a bit smaller than text1's 15px */
     color: white;
+  
+    /* Truncation magic */
+    max-width: 70px;          /* keep it narrower so it doesn't overlap icon */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  
+    /* Keep original hover transition */
+    transition: transform 0.6s;
   }
   
+  /* If length is 5..8 => shift left slightly (-68px). */
+.text2--5-8 {
+    left: -68px; 
+}
+
+/* If length is 9..12 => shift left moderately (-72px). */
+.text2--9-12 {
+    left: -72px;
+}
+
+/* If length is 12..15 => shift left further (-80px). */
+.text2--12-15 {
+    left: -80px;
+}
+
+/* If length is > 15 => shift left similarly,
+   plus set truncation so it doesn't overlap the icon.
+*/
+.text2--over15 {
+    left: -70px;
+    max-width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
   .icon {
     position: absolute;
     top: 0;
@@ -34,7 +69,7 @@ button {
     transition: transform 0.5s;
   }
   
-  /* The red background behind the icon that slides over */
+  /* original red background behind icon */
   .icon::before {
     position: absolute;
     left: -100px;
@@ -47,7 +82,7 @@ button {
     background-color: #cd201f;
   }
   
-  /* Hover moves the icon to the right and also slides text2 in */
+  /* Keep original hover transforms */
   button:hover .icon {
     transform: translateX(96px);
     transition: transform 0.5s;
@@ -58,7 +93,6 @@ button {
     transition: transform 0.6s;
   }
   
-  /* Slight scale effect on button click */
   button:active {
     transform: scale(1.03);
   }
