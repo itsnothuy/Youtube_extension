@@ -29,31 +29,31 @@ const calculateRatio = (likes, dislikes) => {
 /**
  * Inserts the stats UI into the page.
  */
-const insertStatsUI = (likeCount, dislikeCount, ratio) => {
-  const container = document.createElement('div');
-  container.id = 'like-dislike-container';
-  container.style.position = 'fixed';
-  container.style.bottom = '10px';
-  container.style.right = '10px';
-  container.style.zIndex = '9999';
-  container.style.padding = '8px';
-  container.style.background = 'rgba(0,0,0,0.7)';
-  container.style.color = '#fff';
-  container.style.borderRadius = '4px';
-  container.style.fontSize = '14px';
+// const insertStatsUI = (likeCount, dislikeCount, ratio) => {
+//   const container = document.createElement('div');
+//   container.id = 'like-dislike-container';
+//   container.style.position = 'fixed';
+//   container.style.bottom = '10px';
+//   container.style.right = '10px';
+//   container.style.zIndex = '9999';
+//   container.style.padding = '8px';
+//   container.style.background = 'rgba(0,0,0,0.7)';
+//   container.style.color = '#fff';
+//   container.style.borderRadius = '4px';
+//   container.style.fontSize = '14px';
 
-  // Use a simple “traffic light” border color:
-  const color = ratio > 80 ? 'green' : ratio > 50 ? 'yellow' : 'red';
-  container.style.border = `2px solid ${color}`;
+//   // Use a simple “traffic light” border color:
+//   const color = ratio > 80 ? 'green' : ratio > 50 ? 'yellow' : 'red';
+//   container.style.border = `2px solid ${color}`;
 
-  container.innerHTML = `
-    <div><strong>Likes:</strong> ${likeCount}</div>
-    <div><strong>Dislikes:</strong> ${dislikeCount}</div>
-    <div><strong>Like Ratio:</strong> ${ratio.toFixed(2)}%</div>
-  `;
+//   container.innerHTML = `
+//     <div><strong>Likes:</strong> ${likeCount}</div>
+//     <div><strong>Dislikes:</strong> ${dislikeCount}</div>
+//     <div><strong>Like Ratio:</strong> ${ratio.toFixed(2)}%</div>
+//   `;
 
-  document.body.appendChild(container);
-};
+//   document.body.appendChild(container);
+// };
 
 /**
  * Fetches the official like count from the YouTube Data API.
