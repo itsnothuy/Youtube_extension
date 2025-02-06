@@ -1,0 +1,41 @@
+/* uiverseIcons.css */
+
+/* The container for each icon */
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 8px; /* small spacing from text, if desired */
+  }
+  
+  /* Hide the default checkbox visually */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* The icon styling */
+  .container svg {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    transition: all 0.3s;
+    fill: #666; /* default gray */
+  }
+  
+  /* Hover effect */
+  .container svg:hover {
+    transform: scale(1.1) rotate(-10deg);
+  }
+  
+  /* If the checkbox is checked, color the icon */
+  .container input:checked ~ svg {
+    fill: var(--activeColor, #2196F3); /* fallback color if var isn't set */
+  }
+  
