@@ -1,0 +1,65 @@
+/* titleButton.css */
+/* The same CSS you shared, with minor naming tweaks: */
+
+button {
+    position: relative;
+    width: 130px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: white;
+    border: 1px #cd201f solid;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .text1 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 22%;
+  }
+  
+  .text2 {
+    position: absolute;
+    top: 25%;
+    left: -50px; /* Start hidden to the left */
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+  }
+  
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s;
+  }
+  
+  /* The red background behind the icon that slides over */
+  .icon::before {
+    position: absolute;
+    left: -100px;
+    top: 0;
+    z-index: -1;
+    content: '';
+    width: 130px;
+    height: 33px;
+    border-radius: 30px;
+    background-color: #cd201f;
+  }
+  
+  /* Hover moves the icon to the right and also slides text2 in */
+  button:hover .icon {
+    transform: translateX(96px);
+    transition: transform 0.5s;
+  }
+  
+  button:hover .text2 {
+    transform: translateX(100px);
+    transition: transform 0.6s;
+  }
+  
+  /* Slight scale effect on button click */
+  button:active {
+    transform: scale(1.03);
+  }
+  

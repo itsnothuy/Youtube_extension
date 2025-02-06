@@ -275,6 +275,8 @@ import React, { useState, useEffect } from 'react';
 import LikeIcon from './LikeIcon.jsx';
 import DislikeIcon from './DislikeIcon.jsx';
 import './Icons.css'; // ensure CSS is loaded here if not already
+import TitleButton from './TitleButton.jsx';
+
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -285,6 +287,7 @@ export default function App() {
   const [likeCount, setLikeCount] = useState(null);
   const [dislikeCount, setDislikeCount] = useState(null);
   const [ratio, setRatio] = useState(0);
+  const [channelName, setChannelName] = useState('');
 
   // Animated states
   const [animLikes, setAnimLikes] = useState(0);
@@ -330,12 +333,20 @@ export default function App() {
     try {
       // Official like count
       const ytRes = await fetch(
-        `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${vid}&key=${apiKey}`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${vid}&key=${apiKey}`
       );
       const ytData = await ytRes.json();
       if (ytData.items && ytData.items.length > 0) {
+        const video = ytData.items[0];
         const stats = ytData.items[0].statistics;
         const likes = Number(stats.likeCount);
+        const snippet = video.snippet;
+
+
+        const channelTitle = snippet.channelTitle;  // <--- THIS
+
+        // Save the channel name in some state
+        setChannelName(channelTitle);
 
         // Dislike estimate
         const rRes = await fetch(
@@ -393,8 +404,9 @@ export default function App() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>YouTube Stats</h2>
-
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
+        <TitleButton channelName={channelName} />
+      </div>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
