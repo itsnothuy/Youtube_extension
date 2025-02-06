@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "name": "YouTube Like/Dislike Extension",
     "author": "Huy Tran",
+    "description": "Displays official like count and Return YouTube Dislike count with a ratio on YouTube videos.",
     "action": {
       "default_popup": "src/popup/popup.html",
       "default_title": "Like/Dislike Extension"

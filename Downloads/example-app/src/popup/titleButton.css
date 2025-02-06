@@ -25,7 +25,6 @@ button {
     font-weight: 700;
     font-size: 13px;          /* a bit smaller than text1's 15px */
     color: white;
-  
     /* Truncation magic */
     max-width: 70px;          /* keep it narrower so it doesn't overlap icon */
     white-space: nowrap;
